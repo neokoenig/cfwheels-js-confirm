@@ -1,5 +1,5 @@
 {
-    "name":"JS Confirm",
+    "name":"CFWheels JS Confirm",
     "version":"1.0",
     "author":"Per Djurner",
     "location":"perdjurner/cfwheels-js-confirm#v1.0",
@@ -49,13 +49,6 @@
     },
     "installPaths":{
 
-    },
-    "scripts":{
-        "postVersion":"package set location='perdjurner/cfwheels-js-confirm#v`package version`'",
-        "postPublish":"!git push --follow-tags",
-        "patch-release":"bump --patch && publish",
-        "minor-release":"bump --minor && publish",
-        "major-release":"bump --major && publish"
     },
     "ignore":[
         "**/.*",
