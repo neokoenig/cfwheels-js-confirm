@@ -1,8 +1,8 @@
 {
     "name":"CFWheels JS Confirm",
-    "version":"1.0.3",
+    "version":"1.0.4",
     "author":"Per Djurner",
-    "location":"perdjurner/cfwheels-js-confirm#v1.0.3",
+    "location":"perdjurner/cfwheels-js-confirm#v1.0.4",
     "directory":"/plugins/",
     "createPackageDirectory":true,
     "packageDirectory":"jsconfirm",

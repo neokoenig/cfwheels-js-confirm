@@ -11,7 +11,7 @@ component mixin="controller" {
 	public string function linkTo() {
 		local.confirm = $jsConfirmArgs(args=arguments);
 		local.rv = core.linkTo(argumentCollection=arguments);
-		local.rv = $jsConfirmAdd(name="onclick", rv=local.rv, confirm=local.confirm);
+		local.rv = $jsConfirmAdd(name="a", rv=local.rv, confirm=local.confirm);
 		return local.rv;
 	}
 
@@ -21,7 +21,7 @@ component mixin="controller" {
 	public string function buttonTo() {
 		local.confirm = $jsConfirmArgs(args=arguments);
 		local.rv = core.buttonTo(argumentCollection=arguments);
-		local.rv = $jsConfirmAdd(name="onsubmit", rv=local.rv, confirm=local.confirm);
+		local.rv = $jsConfirmAdd(name="input", rv=local.rv, confirm=local.confirm);
 		return local.rv;
 	}
 
@@ -45,8 +45,9 @@ component mixin="controller" {
 	public string function $jsConfirmAdd(required string name, required string rv, required string confirm) {
 		if (Len(arguments.confirm)) {
 			local.js = "return confirm('#JSStringFormat(arguments.confirm)#');";
-			local.check = " " & arguments.name & "=""";
-			local.checkPos = Find(local.check, arguments.rv);
+			local.check = " onclick=""";
+			local.startPos = Find("<" & arguments.name & " ", arguments.rv);
+			local.checkPos = Find(local.check, arguments.rv, local.startPos);
 			if (local.checkPos) {
 				// An attribute value already exists we set the string to be added to just the JavaScript.
 				// Also set the positition to insert at to be where the ending double quote is found.
@@ -56,7 +57,7 @@ component mixin="controller" {
 				// No existing attribute exists so we can add the entire attribute and not just the JavaScript part.
 				// Set the position to insert at to be before the ending tag.
 				local.attribute = local.check & local.js & """";
-				local.pos = Find(">", arguments.rv);
+				local.pos = Find(">", arguments.rv, local.startPos);
 			}
 			local.rv = Insert(local.attribute, arguments.rv, local.pos - 1);
 		} else {
