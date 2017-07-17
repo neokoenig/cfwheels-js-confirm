@@ -46,7 +46,15 @@ component mixin="controller" {
 		if (Len(arguments.confirm)) {
 			local.js = "return confirm('#JSStringFormat(arguments.confirm)#');";
 			local.check = " onclick=""";
-			local.startPos = Find("<" & arguments.name & " ", arguments.rv);
+			
+			// For forms we need to make sure we select the input with type="submit"
+			// Because we may have other inputs there, such as the hidden "_method" one.
+			if (arguments.name == "input") {
+				local.startPos = REFind("<" & arguments.name & " [^>]*type=""submit""", arguments.rv);
+			} else {
+				local.startPos = Find("<" & arguments.name & " ", arguments.rv);				
+			}
+
 			local.checkPos = Find(local.check, arguments.rv, local.startPos);
 			if (local.checkPos) {
 				// An attribute value already exists we set the string to be added to just the JavaScript.
