@@ -1,12 +1,12 @@
 {
     "name":"CFWheels JS Confirm",
     "version":"1.0.5",
-    "author":"Per Djurner",
-    "location":"perdjurner/cfwheels-js-confirm#v1.0.5",
+    "author":"Per Djurner, Tom King",
+    "location":"neokoenig/cfwheels-js-confirm#v1.0.5",
     "directory":"/plugins/",
     "createPackageDirectory":true,
     "packageDirectory":"jsconfirm",
-    "homepage":"https://github.com/perdjurner/cfwheels-js-confirm",
+    "homepage":"https://github.com/neokoenig/cfwheels-js-confirm",
     "documentation":"",
     "repository":{
         "type":"",
