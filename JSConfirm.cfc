@@ -1,7 +1,7 @@
 component mixin="controller" {
 
 	public any function init() {
-		this.version = "2.0";
+		this.version = "2.0,2.2.0";
 		return this;
 	}
 
